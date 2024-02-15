@@ -8,9 +8,10 @@ import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 import repository.TransporteRepository;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest(classes = TransportesApplication.class)
+@SpringBootTest(classes = TransportesApplication.class) // Substitua SuaClassePrincipal pela sua classe principal
 public class TransporteServiceTest {
 
     @InjectMocks
@@ -28,7 +29,9 @@ public class TransporteServiceTest {
     @Test
     public void testAdicionarTransporte() {
         Transporte transporte = new Transporte();
-        transporteService.adicionarTransporte(transporte);
+        when(transporteRepository.save(any(Transporte.class))).thenReturn(transporte);
+        Transporte created = transporteService.adicionarTransporte(transporte);
+        assertNotNull(created);
         verify(transporteRepository, times(1)).save(transporte);
     }
 

@@ -24,5 +24,11 @@ public class TransporteService {
         return transporteRepository.save(transporte);
     }
 
-    // outros métodos conforme necessário
+    public void deletarTransporte(Long id) {
+        transporteRepository.deleteById(id);
+    }
+
+    public Transporte alterarTransporte(Transporte transporte) {
+        return transporteRepository.save(transporte);
+    }
 }

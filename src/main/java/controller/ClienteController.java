@@ -22,5 +22,18 @@ public class ClienteController {
         return clienteService.getClientes();
     }
 
-    // outros métodos conforme necessário
+    @PostMapping
+    public Cliente adicionarCliente(@RequestBody Cliente cliente) {
+        return clienteService.adicionarCliente(cliente);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deletarCliente(@PathVariable Long id) {
+        clienteService.deletarCliente(id);
+    }
+
+    @PutMapping
+    public Cliente alterarCliente(@RequestBody Cliente cliente) {
+        return clienteService.alterarCliente(cliente);
+    }
 }
