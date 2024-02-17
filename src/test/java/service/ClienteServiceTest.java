@@ -4,18 +4,14 @@ import model.tms.transporte.Cliente;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import repository.ClienteRepository;
-
 import java.util.Arrays;
 import java.util.List;
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -43,6 +39,7 @@ public class ClienteServiceTest {
         logger.info("Teste concluído: testGetClientes");
     }
 
+    @SuppressWarnings("null")
     @Test
     public void testAdicionarCliente() {
         logger.info("Iniciando teste: testAdicionarCliente");
@@ -80,6 +77,7 @@ public class ClienteServiceTest {
         logger.info("Teste concluído: testDeletarClienteComErro");
     }
 
+    @SuppressWarnings("null")
     @Test
     public void testAlterarCliente() {
         logger.info("Iniciando teste: testAlterarCliente");

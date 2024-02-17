@@ -26,6 +26,7 @@ public class TransporteServiceTest {
         verify(transporteRepository, times(1)).findAll();
     }
 
+    @SuppressWarnings("null")
     @Test
     public void testAdicionarTransporte() {
         Transporte transporte = new Transporte();
