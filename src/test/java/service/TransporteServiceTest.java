@@ -1,40 +1,68 @@
 package service;
 
-import com.aagterra.transportes.TransportesApplication;
 import model.tms.transporte.Transporte;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.mockito.MockitoAnnotations;
 import repository.TransporteRepository;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import java.util.Arrays;
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-@SpringBootTest(classes = TransportesApplication.class) // Substitua SuaClassePrincipal pela sua classe principal
 public class TransporteServiceTest {
 
     @InjectMocks
-    private TransporteService transporteService;
+    TransporteService transporteService;
 
     @Mock
-    private TransporteRepository transporteRepository;
+    TransporteRepository transporteRepository;
+
+    @BeforeEach
+    public void init() {
+        MockitoAnnotations.initMocks(this);
+    }
 
     @Test
-    public void testGetTransportes() {
-        transporteService.getTransportes();
+    public void getTransportesTest() {
+        Transporte transporte = new Transporte();
+        when(transporteRepository.findAll()).thenReturn(Arrays.asList(transporte));
+
+        List<Transporte> result = transporteService.getTransportes();
+        assertEquals(1, result.size());
         verify(transporteRepository, times(1)).findAll();
     }
 
-    @SuppressWarnings("null")
     @Test
-    public void testAdicionarTransporte() {
+    public void adicionarTransporteTest() {
         Transporte transporte = new Transporte();
-        when(transporteRepository.save(any(Transporte.class))).thenReturn(transporte);
-        Transporte created = transporteService.adicionarTransporte(transporte);
-        assertNotNull(created);
+        when(transporteRepository.save(transporte)).thenReturn(transporte);
+
+        Transporte result = transporteService.adicionarTransporte(transporte);
+        assertEquals(transporte, result);
         verify(transporteRepository, times(1)).save(transporte);
     }
 
-    // outros testes conforme necessário
+    @Test
+    public void deletarTransporteTest() {
+        Long id = 1L;
+        doNothing().when(transporteRepository).deleteById(id);
+
+        transporteService.deletarTransporte(id);
+        verify(transporteRepository, times(1)).deleteById(id);
+    }
+
+    @Test
+    public void alterarTransporteTest() {
+        Transporte transporte = new Transporte();
+        when(transporteRepository.save(transporte)).thenReturn(transporte);
+
+        Transporte result = transporteService.alterarTransporte(transporte);
+        assertEquals(transporte, result);
+        verify(transporteRepository, times(1)).save(transporte);
+    }
 }

@@ -1,5 +1,6 @@
 package controller;
 
+import jakarta.validation.Valid;
 import model.tms.despesas.Motorista;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,5 +23,22 @@ public class MotoristaController {
         return motoristaService.getMotoristas();
     }
 
-    // outros métodos conforme necessário
+    @PostMapping
+    public Motorista adicionarMotorista(@Valid @RequestBody Motorista motorista) {
+        return motoristaService.adicionarMotorista(motorista);
+    }
+
+
+    // Atualizar Motorista
+    @PutMapping("/{id}")
+    public Motorista atualizarMotorista(@Valid @PathVariable Long id, @Valid @RequestBody Motorista motorista) {
+        return motoristaService.atualizarMotorista(id, motorista);
+    }
+
+    // Deletar Motorista
+    @DeleteMapping("/{id}")
+    public void deletarMotorista(@Valid @PathVariable Long id) {
+        motoristaService.deletarMotorista(id);
+    }
+
 }

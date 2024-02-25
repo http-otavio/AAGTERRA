@@ -1,5 +1,6 @@
 package service;
 
+import exception.ResourceNotFoundException;
 import model.tms.socios.Lucro;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,25 @@ public class LucroService {
         return lucroRepository.findAll();
     }
 
-    // outros métodos conforme necessário
+    public Lucro adicionarLucro(Lucro lucro) {
+        return lucroRepository.save(lucro);
+    }
+
+    public Lucro atualizarLucro(Long id, Lucro lucro) {
+        Lucro lucroExistente = lucroRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Lucro", "id", id));
+
+        // Atualize os campos necessários do lucroExistente com os do lucro
+
+        return lucroRepository.save(lucroExistente);
+    }
+
+    public void deletarLucro(Long id) {
+        if (!lucroRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Lucro", "id", id);
+        }
+
+        lucroRepository.deleteById(id);
+    }
+
 }

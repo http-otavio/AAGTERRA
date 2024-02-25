@@ -1,5 +1,6 @@
 package service;
 
+import exception.ResourceNotFoundException;
 import model.tms.socios.Socio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,5 +21,25 @@ public class SocioService {
         return socioRepository.findAll();
     }
 
-    // outros métodos conforme necessário
+    public Socio adicionarSocio(Socio socio) {
+        return socioRepository.save(socio);
+    }
+
+    public Socio atualizarSocio(Long id, Socio socio) {
+        Socio socioExistente = socioRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Socio", "id", id));
+
+        // Atualize os campos necessários do socioExistente com os do socio
+
+        return socioRepository.save(socioExistente);
+    }
+
+    public void deletarSocio(Long id) {
+        if (!socioRepository.existsById(id)) {
+            throw new ResourceNotFoundException("Socio", "id", id);
+        }
+
+        socioRepository.deleteById(id);
+    }
+
 }

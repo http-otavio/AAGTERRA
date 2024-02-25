@@ -1,5 +1,6 @@
 package controller;
 
+import jakarta.validation.Valid;
 import model.tms.transporte.Viagem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,5 +23,22 @@ public class ViagemController {
         return viagemService.getViagens();
     }
 
-    // outros métodos conforme necessário
+    @PostMapping
+    public Viagem adicionarViagem(@Valid @RequestBody Viagem viagem) {
+        return viagemService.adicionarViagem(viagem);
+    }
+
+
+    // Atualizar Viagem
+    @PutMapping("/{id}")
+    public Viagem atualizarViagem(@Valid @PathVariable Long id, @Valid @RequestBody Viagem viagem) {
+        return viagemService.atualizarViagem(id, viagem);
+    }
+
+    // Deletar Viagem
+    @DeleteMapping("/{id}")
+    public void deletarViagem(@Valid @PathVariable Long id) {
+        viagemService.deletarViagem(id);
+    }
+
 }

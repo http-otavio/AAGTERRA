@@ -1,5 +1,6 @@
 package controller;
 
+import jakarta.validation.Valid;
 import model.tms.transporte.Transporte;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -26,12 +27,12 @@ public class TransporteController {
     }
 
     @PostMapping
-    public Transporte adicionarTransporte(@RequestBody Transporte transporte) {
+    public Transporte adicionarTransporte(@Valid @RequestBody Transporte transporte) {
         return transporteService.adicionarTransporte(transporte);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletarTransporte(@PathVariable Long id) {
+    public ResponseEntity<Void> deletarTransporte(@Valid @PathVariable Long id) {
         try {
             transporteService.deletarTransporte(id);
             return ResponseEntity.noContent().build();
@@ -41,7 +42,7 @@ public class TransporteController {
     }
 
     @PutMapping
-    public ResponseEntity<Transporte> alterarTransporte(@RequestBody Transporte transporte) {
+    public ResponseEntity<Transporte> alterarTransporte(@Valid @RequestBody Transporte transporte) {
         try {
             Transporte transporteAtualizado = transporteService.alterarTransporte(transporte);
             return ResponseEntity.ok(transporteAtualizado);

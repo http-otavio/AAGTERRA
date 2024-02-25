@@ -20,17 +20,17 @@ public class ClienteService {
         return clienteRepository.findAll();
     }
 
-    @SuppressWarnings("null")
+    
     public Cliente adicionarCliente(Cliente cliente) {
         return clienteRepository.save(cliente);
     }
 
-    @SuppressWarnings("null")
+    
     public void deletarCliente(Long id) {
         clienteRepository.deleteById(id);
     }
 
-    @SuppressWarnings("null")
+    
     public Cliente alterarCliente(Cliente cliente) {
         return clienteRepository.save(cliente);
     }

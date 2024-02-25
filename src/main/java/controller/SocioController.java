@@ -1,5 +1,6 @@
 package controller;
 
+import jakarta.validation.Valid;
 import model.tms.socios.Socio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,5 +23,22 @@ public class SocioController {
         return socioService.getSocios();
     }
 
-    // outros métodos conforme necessário
+    @PostMapping
+    public Socio adicionarSocio(@Valid @RequestBody Socio socio) {
+        return socioService.adicionarSocio(socio);
+    }
+
+
+    // Atualizar Socio
+    @PutMapping("/{id}")
+    public Socio atualizarSocio(@Valid  @PathVariable Long id,@Valid  @RequestBody Socio socio) {
+        return socioService.atualizarSocio(id, socio);
+    }
+
+    // Deletar Socio
+    @DeleteMapping("/{id}")
+    public void deletarSocio(@Valid @PathVariable Long id) {
+        socioService.deletarSocio(id);
+    }
+
 }

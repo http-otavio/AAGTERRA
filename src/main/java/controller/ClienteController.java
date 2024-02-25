@@ -1,5 +1,6 @@
 package controller;
 
+import jakarta.validation.Valid;
 import model.tms.transporte.Cliente;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +24,7 @@ public class ClienteController {
     }
 
     @PostMapping
-    public Cliente adicionarCliente(@RequestBody Cliente cliente) {
+    public Cliente adicionarCliente(@Valid @RequestBody Cliente cliente) {
         return clienteService.adicionarCliente(cliente);
     }
 
