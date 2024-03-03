@@ -1,12 +1,13 @@
 package service;
 
-import model.tms.transporte.Transporte;
+import com.aagterra.transportes.model.transporte.Transporte;
+import com.aagterra.transportes.service.TransporteService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import repository.TransporteRepository;
+import com.aagterra.transportes.repository.TransporteRepository;
 
 import java.util.Arrays;
 import java.util.List;
