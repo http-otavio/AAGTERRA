@@ -21,10 +21,12 @@ public class MotoristaService {
         return motoristaRepository.findAll();
     }
 
+    @SuppressWarnings("null")
     public Motorista adicionarMotorista(Motorista motorista) {
         return motoristaRepository.save(motorista);
     }
 
+    @SuppressWarnings("null")
     public Motorista atualizarMotorista(Long id, Motorista motorista) {
         Motorista motoristaExistente = motoristaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Motorista", "id", id));
@@ -34,6 +36,7 @@ public class MotoristaService {
         return motoristaRepository.save(motoristaExistente);
     }
 
+    @SuppressWarnings("null")
     public void deletarMotorista(Long id) {
         if (!motoristaRepository.existsById(id)) {
             throw new ResourceNotFoundException("Motorista", "id", id);

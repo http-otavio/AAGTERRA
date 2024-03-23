@@ -21,10 +21,12 @@ public class DespesaService {
         return despesaRepository.findAll();
     }
 
+    @SuppressWarnings("null")
     public Despesa adicionarDespesa(Despesa despesa) {
         return despesaRepository.save(despesa);
     }
 
+    @SuppressWarnings("null")
     public Despesa atualizarDespesa(Long id, Despesa despesa) {
         Despesa despesaExistente = despesaRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Despesa", "id", id));
@@ -34,6 +36,7 @@ public class DespesaService {
         return despesaRepository.save(despesaExistente);
     }
 
+    @SuppressWarnings("null")
     public void deletarDespesa(Long id) {
         if (!despesaRepository.existsById(id)) {
             throw new ResourceNotFoundException("Despesa", "id", id);

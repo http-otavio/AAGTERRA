@@ -23,6 +23,7 @@ public class TransporteServiceTest {
     @Mock
     TransporteRepository transporteRepository;
 
+    @SuppressWarnings("deprecation")
     @BeforeEach
     public void init() {
         MockitoAnnotations.initMocks(this);

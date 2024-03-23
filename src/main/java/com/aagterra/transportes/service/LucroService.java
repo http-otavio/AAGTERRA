@@ -25,10 +25,12 @@ public class LucroService {
         return lucroRepository.findAll();
     }
 
+    @SuppressWarnings("null")
     public Lucro adicionarLucro(Lucro lucro) {
         return lucroRepository.save(lucro);
     }
 
+    @SuppressWarnings("null")
     public Lucro atualizarLucro(Long id, Lucro lucro) {
         Lucro lucroExistente = lucroRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Lucro", "id", id));
@@ -38,6 +40,7 @@ public class LucroService {
         return lucroRepository.save(lucroExistente);
     }
 
+    @SuppressWarnings("null")
     public void deletarLucro(Long id) {
         if (!lucroRepository.existsById(id)) {
             throw new ResourceNotFoundException("Lucro", "id", id);

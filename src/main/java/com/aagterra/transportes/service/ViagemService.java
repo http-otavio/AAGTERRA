@@ -21,10 +21,12 @@ public class ViagemService {
         return viagemRepository.findAll();
     }
 
+    @SuppressWarnings("null")
     public Viagem adicionarViagem(Viagem viagem) {
         return viagemRepository.save(viagem);
     }
 
+    @SuppressWarnings("null")
     public Viagem atualizarViagem(Long id, Viagem viagem) {
         Viagem viagemExistente = viagemRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Viagem", "id", id));
@@ -34,6 +36,7 @@ public class ViagemService {
         return viagemRepository.save(viagemExistente);
     }
 
+    @SuppressWarnings("null")
     public void deletarViagem(Long id) {
         if (!viagemRepository.existsById(id)) {
             throw new ResourceNotFoundException("Viagem", "id", id);

@@ -22,16 +22,19 @@ public class TransporteService {
     }
 
     
+    @SuppressWarnings("null")
     public Transporte adicionarTransporte(Transporte transporte) {
         return transporteRepository.save(transporte);
     }
 
     
+    @SuppressWarnings("null")
     public void deletarTransporte(Long id) {
         transporteRepository.deleteById(id);
     }
 
     
+    @SuppressWarnings("null")
     public Transporte alterarTransporte(Transporte transporte) {
         return transporteRepository.save(transporte);
     }

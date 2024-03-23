@@ -2,8 +2,6 @@ package com.aagterra.transportes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 //@ComponentScan(basePackages = {"com.aagterra.transportes", "com/aagterra/transportes/controller", "com/aagterra/transportes/exception", "model.tms", "com/aagterra/transportes/repository", "service"})

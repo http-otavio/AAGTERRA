@@ -21,10 +21,12 @@ public class FaturamentoService {
         return faturamentoRepository.findAll();
     }
 
+    @SuppressWarnings("null")
     public Faturamento adicionarFaturamento(Faturamento faturamento) {
         return faturamentoRepository.save(faturamento);
     }
 
+    @SuppressWarnings("null")
     public Faturamento atualizarFaturamento(Long id, Faturamento faturamento) {
         Faturamento faturamentoExistente = faturamentoRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Faturamento", "id", id));
@@ -34,6 +36,7 @@ public class FaturamentoService {
         return faturamentoRepository.save(faturamentoExistente);
     }
 
+    @SuppressWarnings("null")
     public void deletarFaturamento(Long id) {
         if (!faturamentoRepository.existsById(id)) {
             throw new ResourceNotFoundException("Faturamento", "id", id);

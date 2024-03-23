@@ -23,6 +23,7 @@ public class ClienteServiceTest {
     @Mock
     ClienteRepository clienteRepository;
 
+    @SuppressWarnings("deprecation")
     @BeforeEach
     public void init() {
         MockitoAnnotations.initMocks(this);

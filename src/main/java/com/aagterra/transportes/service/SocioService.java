@@ -21,10 +21,12 @@ public class SocioService {
         return socioRepository.findAll();
     }
 
+    @SuppressWarnings("null")
     public Socio adicionarSocio(Socio socio) {
         return socioRepository.save(socio);
     }
 
+    @SuppressWarnings("null")
     public Socio atualizarSocio(Long id, Socio socio) {
         Socio socioExistente = socioRepository.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Socio", "id", id));
@@ -34,6 +36,7 @@ public class SocioService {
         return socioRepository.save(socioExistente);
     }
 
+    @SuppressWarnings("null")
     public void deletarSocio(Long id) {
         if (!socioRepository.existsById(id)) {
             throw new ResourceNotFoundException("Socio", "id", id);
