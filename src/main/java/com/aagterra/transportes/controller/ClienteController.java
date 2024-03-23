@@ -9,6 +9,8 @@ import com.aagterra.transportes.service.ClienteService;
 import java.util.List;
 
 @RestController
+
+
 @RequestMapping("/clientes")
 public class ClienteController {
     private final ClienteService clienteService;
